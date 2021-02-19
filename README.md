@@ -7,3 +7,5 @@ Seems the same as: https://github.com/grpc/grpc-dotnet/issues/1114
 
 
 ![alt text](https://github.com/acurrens/GrpcJsonParseIssue/blob/master/ParseError1.PNG?raw=true)
+
+![alt text](https://github.com/acurrens/GrpcJsonParseIssue/blob/master/ParseError2.PNG?raw=true)
