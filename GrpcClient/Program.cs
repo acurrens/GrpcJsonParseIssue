@@ -17,6 +17,9 @@ namespace GrpcClient
                 Console.WriteLine($"Id: {c.Id} | Year: {c.Year} | Make: {c.Make} | Model: {c.Model} ");
             }
             
+            // Engine is an extra field not defined in the proto definition.
+            // Presumably using the parser option "WithDiscardUnknownFields" set to true this would ignore those fields and continue
+            // instead an exception is thrown stating 'Unknown field <field name>'
             string newCarJson = @"{""cars"": [
                     { ""id"":6,""make"":""Nissan"",""model"":""GT-R"",""year"":2017},
                     { ""id"":7,""make"":""BMW"",""model"":""M3"",""year"":2005, ""engine"":""I6""},
@@ -25,7 +28,7 @@ namespace GrpcClient
                     }";
 
             var parser = CarList.Parser.WithDiscardUnknownFields(true);
-            var cList = parser.ParseJson(newCarJson);
+            var cList = parser.ParseJson(newCarJson); // <-- Exception here
 
             foreach (var c in cList.Cars)
             {
