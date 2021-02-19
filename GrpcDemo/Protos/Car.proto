@@ -1,0 +1,21 @@
+﻿syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+option csharp_namespace = "GrpcDemo";
+
+package vehicles;
+
+service CarSvc {
+  rpc GetAll (google.protobuf.Empty) returns (CarList);
+}
+
+message CarList {
+  repeated Car cars = 1;
+}
+
+message Car {
+	int32 Id = 1 [json_name="id"];
+	string Make = 2 [json_name="make"];
+	string Model = 3 [json_name="model"];
+	int32 Year = 4 [json_name="year"];
+}
